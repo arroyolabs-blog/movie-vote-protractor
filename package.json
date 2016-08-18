@@ -1,0 +1,14 @@
+{
+  "name": "movie-vote-protractor",
+  "version": "1.0.0",
+  "description": "Demo App with a Protractor JS test",
+  "main": "index.html",
+  "scripts": {
+    "test": "protractor conf.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "protractor": "^4.0.3"
+  }
+}

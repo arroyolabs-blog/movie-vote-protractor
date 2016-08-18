@@ -1,0 +1,37 @@
+<!doctype>
+<html>
+    <head>
+        <title>Movie Vote</title>
+        <style>
+        .movie {
+          border:1px dashed #efefef;
+          width: 200px;
+          margin:1px;
+          padding: 7px;
+        }
+        </style>
+    </head>
+    <body>
+        <h1>Movies</h1>
+        <!-- example movie -->
+        <div class="movie" data-idx="42">
+          <dl>
+            <dt>Title</dt>
+            <dd>Chinatown</dd>
+            <dt>Year</dt>
+            <dd>1974</dd>
+            <dt>Votes</dt>
+            <dd><span id="votes">n/a</span></dd>
+          </dl>
+          <button id="upvote">Upvote</button>
+          <button id="downvote">Downvote</button>
+        </div>
+        <script type="text/javascript" src="lib/movie.js" charset="utf-8"></script>
+        <script>
+        // init the movie class
+        (function() {
+            AL.movie.init();
+        })();
+        </script>
+    </body>
+</html>
