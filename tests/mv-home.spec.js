@@ -1,4 +1,25 @@
+// example page object
+var MovieVote = function() {
+
+    // get the page via browser
+    this.get = function() {
+        dv.get('http://localhost:8000/')
+    };
+
+    // return the value of vote text after executing a promise
+    this.getVotesText = function() {
+        return dv.findElement(By.id('votes')).then(function(el) { 
+            return el.getText();
+        });
+    };
+
+};
+
 describe('Movie Vote App - Home Page', function() {
+
+    // initialize a page object as a fixture
+    var movieVoteObj = new MovieVote();
+    movieVoteObj.get();
 
     // in order to test a non-angular app, we need to make sure we 
     // tun off the synchronization detection that would
@@ -42,6 +63,8 @@ describe('Movie Vote App - Home Page', function() {
                 expect(el.length).toEqual(1); 
             });
 
+            expect(movieVoteObj.getVotesText()).toEqual('0');
+        
         });
     });
 
