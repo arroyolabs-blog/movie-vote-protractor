@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "file-system": "^2.2.1",
+    "fs": "0.0.1-security",
     "local-web-server": "*",
     "protractor": "^4.0.3"
   }
