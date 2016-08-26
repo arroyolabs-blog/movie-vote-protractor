@@ -12,34 +12,44 @@ describe('Movie Vote App - Home Page', function() {
         return dv.get('http://localhost:8000/');
     }
 
-    // helper for taking screenshots
-    function writeScreenShot(data, filename) {
-        var stream = fs.createWriteStream(filename);
-        stream.write(new Buffer(data, 'base64'));
-        stream.end();
-    }
-
-    //afterEach(function() {
-    //    var passed = jasmine.getEnv().currentSpec.results().passed();
-    //    if (!passed) {
-    //        var fs = require('file-system');
-    //        dv.takeScreenshot().then((png) => {
-    //              writeScreenShot(png, 'foo.png');
-    //        });
-    //    }
-    //});
-
     it('should see rendered page elements', function() {
         loadHomePage().then(function () {
 
-            // check the title exists
+            /*
+            Testing Elements
+            */
+
+            // The Webdriver has a built in method to check the page title. This is useful to make
+            // sure were on the page we expect when navigating
             expect(dv.getTitle()).toEqual('Movie Vote');
 
-            var foo = dv.findElements(By.xpath('//*[@id="votes"]')).then(function(el) { 
+
+            // counting elements instances can be a fragile way to test, but is
+            // often the easiest way to make sure the stuff we expect shows up 
+            // on the page
+
+            // Get elements via XPath Selectors and check counts
+            dv.findElements(By.xpath('//*[@id="votes"]')).then(function(el) { 
                 expect(el.length).toEqual(1); 
             });
+
+            dv.findElements(By.xpath('/html/body/ul/li')).then(function(el) { 
+                expect(el.length).toEqual(2); 
+            });
+
+            // Get elements via CSS ID and check the count
+            dv.findElements(By.id('votes')).then(function(el) { 
+                expect(el.length).toEqual(1); 
+            });
+
         });
     });
+
+    /*
+    Test some of the user actions associated with the web app itself.
+
+    In this case, we should test the upvote and downvote buttons.
+    */
 
     it('should increment vote count when clicking upvote', function() {
         loadHomePage().then(function () {
