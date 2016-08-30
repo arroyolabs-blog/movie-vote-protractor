@@ -14,9 +14,11 @@ describe('Movie Vote App - Home Page - Expected Failure', function() {
 
     // cause an expected failure to make sure we take a screenshot
     it('should see rendered page elements', function() {
+        /*
         loadHomePage().then(function () {
             expect(dv.getTitle()).toEqual('Not the title');
         });
+        */
     });
 
 });
